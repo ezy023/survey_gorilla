@@ -25,7 +25,25 @@ end
   redirect "/surveys/create"
 end
 
-get "surveys/:id/results" do
+get "/surveys/:id/results" do
 
   erb :results
 end
+
+
+get '/surveys/:id/take' do
+  @survey = Survey.find_by_id(params[:id])
+  erb :take_survey
+end
+
+post '/surveys/:id/take' do
+  p params
+  @survey = Survey.find(params[:id])
+  @user = current_user
+  params.each do |key, value|
+    @user.choices << Choice.find_by_id(value) if key =~ /question/
+  end
+  
+  erb :view_response
+end
+
