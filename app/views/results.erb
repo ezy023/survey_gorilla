@@ -1,0 +1,20 @@
+<h1>Survey stats</h1>
+
+<h3><%= survey.title%></h3>
+
+<h3><%= survey.description%></h3>
+
+<img src="something"></img>
+
+<%survey.questions.all.each do |question|%>
+<ul>
+  <%=question.content%>
+  <%question.choices.each do |choice|%>
+  <li><%=choice.content%></li>
+  <li><%=choice.responses.length%></li>
+  <%end%>
+</ul>
+
+<%=survey.users.count%>
+  
+<%end%>
