@@ -1,0 +1,11 @@
+<h4><%= @survey.title %></h4>
+  <form action="/surveys/<%= @survey.id %>/take" method="post">
+  <% @survey.questions.each do |question| %>
+    <% question.choices.each do |choice| %>
+      <input type="radio" name="<%= choice.id %>" value="<%= choice.id %>"> 
+    <% end %>
+    <br>
+  <% end %>
+<% end %>
+  <input type="submit" name="Submit">
+</form>
