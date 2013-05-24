@@ -2,6 +2,10 @@ class Uploader < CarrierWave::Uploader::Base
   storage :file
 
   def store_dir
-    "public/photos"
+    "/photos"
+  end
+
+  def cache_dir
+    '/photos'
   end
 end
