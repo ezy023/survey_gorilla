@@ -1,0 +1,13 @@
+<header>
+  <table width='100%'>
+    <tr>
+      <td>
+        <a href="/">Home</a>
+        <%= " | <a href='/surveys/create'>Create a survey</a> |" if current_user %>
+      </td>
+      <td style='align:right'>
+        <%= erb :_user_widget %>
+      </td>
+    </tr>
+  </table>
+</header>
