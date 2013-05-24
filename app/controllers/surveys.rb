@@ -21,6 +21,7 @@ post "/surveys/create" do
   params.each do |key, val|
     Choice.create(:content => val , :question_id => question.id ) if key =~ /choice/i
   end
+  redirect to '/'
 end
 
 get "/surveys/:id/results" do
