@@ -4,6 +4,7 @@ get '/' do
     @surveys = Survey.all
     erb :index
   else
+    @surveys = Survey.all
     erb :index
   end
 end

@@ -1,7 +1,7 @@
 get "/surveys/create" do
-
   erb :create
 end
+
 
 post "/surveys/create" do 
   survey = Survey.create(:title => params[:title], 
@@ -21,16 +21,13 @@ post "/surveys/create" do
   params.each do |key, val|
     Choice.create(:content => val , :question_id => question.id ) if key =~ /choice/i
   end
-
-
-  # content_type(:json)
-  # (params).to_json
-  "got it!"
-  redirect "/surveys/create"
 end
 
 get "/surveys/:id/results" do
-  erb :results
+  survey = Survey.find(params[:id])
+
+  erb :results, :locals => { :survey => survey }
+
 end
 
 

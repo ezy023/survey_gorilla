@@ -1,8 +1,12 @@
 <h1>Welcome to Survey Gorilla</h1>
 
+
 <% if @surveys %>
   <% @surveys.each do |survey| %>
+
   <h3><%= survey.title %></h3>  <a href="/surveys/<%=survey.id%>/take">take this survey</a>
-  <ul><li><%= survey.description%></li></ul>
+  <ul><li><%= survey.description%></li>
+  </ul>
+
   <% end %>
 <% end %>
