@@ -1,10 +1,12 @@
 <h1>Create A Survey</h1>
 
-<form id="survey_description" action="/surveys/create" method="post">
+<form id="survey_description" action="/surveys/create" method="post"  enctype="multipart/form-data">
   <table>
   <input type="text" name="title"> Title
   <br>
   <input type="text" name="description"> Description
+  <br>
+  <input type="file" name="image"> Image
   <br>
   <input type="text" name="question1"> Question
   <br>

@@ -3,21 +3,25 @@ get "/surveys/create" do
   erb :create
 end
 
-post "/surveys/create" do
+post "/surveys/create" do 
+  survey = Survey.create(:title => params[:title], 
+                        :description => params[:description])
+  survey.image = params[:image]
+  survey.save
  
 
- survey = Survey.create(:title => params[:title], :description => params[:description])
- 
- question = Question.create(:content => params[:question], :survey_id => survey.id )
+  question = Question.create(:content => params[:question], :survey_id => survey.id )
+  params.delete('title')
+  params.delete('description')
+  params.delete('image')
+  params.delete('question1')
 
- params.delete('title')
- params.delete('description')
- params.each do |key, val|
-  
-  x = "#{key}".to_sym
+  puts params
 
-  Choice.create(:content => params[x] , :question_id => question.id )
-end
+  params.each do |key, val|
+    Choice.create(:content => val , :question_id => question.id ) if key =~ /choice/i
+  end
+
 
   # content_type(:json)
   # (params).to_json
@@ -26,7 +30,6 @@ end
 end
 
 get "/surveys/:id/results" do
-
   erb :results
 end
 
