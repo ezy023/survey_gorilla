@@ -1,0 +1,21 @@
+<tr>
+  <input type="text" name="question1"> Question
+  </tr>
+  <br>
+  <tr>
+  <input type="text" name="choice1"> Response Choices
+  </tr>
+  <br>
+  <tr>
+  <input type="text" name="choice2"> Response Choices
+  </tr>
+  <br>
+  <tr>
+  <input type="text" name="choice3"> Response Choices
+  </tr>
+  <br>
+  <tr>
+  <input type="text" name="choice4"> Response Choices
+ </tr>
+  
+

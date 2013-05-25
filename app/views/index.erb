@@ -1,12 +1,16 @@
 <h1>Welcome to Survey Gorilla</h1>
 <img src="<%= Survey.last.image.url %>">
 
-
+  
 <% if @surveys %>
-  <% @surveys.each do |survey| %>
 
-  <h3><%= survey.title %></h3>  <a href="/surveys/<%=survey.id%>/take">take this survey</a>
+  <% @surveys.each do |survey| %>
+ 
+  <h3><%= survey.title %></h3><a href="/surveys/<%=survey.id%>/take">take this survey</a>
   <ul><li><%= survey.description%></li>
+      <%if current_user%>
+   <a href="/surveys/<%=survey.id%>/results">See The Results!</a>
+  <%end%>
   </ul>
 
   <% end %>

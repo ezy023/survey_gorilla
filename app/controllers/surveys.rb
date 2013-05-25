@@ -2,33 +2,42 @@ get "/surveys/create" do
   erb :create
 end
 
+post '/surveys/add_question' do
+  erb :_question_form, :layout => false 
+end
 
 post "/surveys/create" do 
   survey = Survey.create(:title => params[:title], 
                         :description => params[:description])
   survey.image = params[:image]
+  survey.creator = current_user
   survey.save
- 
-
-  question = Question.create(:content => params[:question], :survey_id => survey.id )
+  question = Question.new
   params.delete('title')
   params.delete('description')
   params.delete('image')
-  params.delete('question1')
-
-  puts params
 
   params.each do |key, val|
-    Choice.create(:content => val , :question_id => question.id ) if key =~ /choice/i
+    if key =~ /question/i
+      question = Question.create(:content => val, :survey_id => survey.id)
+    elsif key =~ /choice/i
+      question.choices << Choice.create(:content => val , :question_id => question.id ) 
+    end
   end
-  redirect to '/'
+
+  redirect '/'
 end
 
 get "/surveys/:id/results" do
-  survey = Survey.find(params[:id])
+  
+  survey = Survey.find_by_id(params[:id])
+  p survey.creator
 
-  erb :results, :locals => { :survey => survey }
-
+  # if survey.creator == current_user
+    erb :results, :locals => { :survey => survey }
+  # else
+  #   redirect '/'
+  # end
 end
 
 

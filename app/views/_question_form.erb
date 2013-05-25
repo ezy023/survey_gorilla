@@ -1,0 +1,11 @@
+  <% all_keys = ('a'..'z').to_a + (0..9).to_a %>
+
+  <tr>
+  <td><input type="text" name="question_<%=all_keys.sample(5).join%>"> Question</td>
+  </tr>
+  
+  <%4.times do%>
+  <tr>
+  <td><input type="text" name="choice_<%=all_keys.sample(5).join%>" > Response Choices</td>
+  </tr>
+  <%end%>

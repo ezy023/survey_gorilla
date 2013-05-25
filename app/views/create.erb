@@ -1,26 +1,31 @@
 <h1>Create A Survey</h1>
 
 <form id="survey_description" action="/surveys/create" method="post"  enctype="multipart/form-data">
-  <table>
-  <input type="text" name="title"> Title
-  <br>
-  <input type="text" name="description"> Description
-  <br>
-  <input type="file" name="image"> Image
-  <br>
-  <input type="text" name="question1"> Question
-  <br>
-  <input type="text" name="choice1"> Response Choices
-  <br>
-  <input type="text" name="choice2"> Response Choices
-  <br>
-  <input type="text" name="choice3"> Response Choices
-  <br>
-  <input type="text" name="choice4"> Response Choices
-  <br>
-  <input type="submit" value="submit">
+  <table id='survey_form'>
+  <tr>
+    <td><input type="text" name="title"> Title</td>
+  
+  </tr>
+  <tr>
+    <td>
+      <input type="text" name="description"> Description
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input type="file" name="image"> Image
+    </td>
+  </tr>
+
+  <td><%= erb :_question_form %></td>
+  
+  
+  
   </table>
+  <input type="submit" value="submit">
 </form>
-<button id="add_question"><a href="#"></a>Add Question</button> #adds question and creates new question box
-<button id="full_submit"><a href="#"></a>Submit Survey</button> #submits whole form
+<button id="add_question"><a href="#"></a>Add Question</button> 
+<!-- adds question and creates new question box -->
+<button id="full_submit"><a href="#"></a>Submit Survey</button> 
+<!-- submits whole form -->
 
